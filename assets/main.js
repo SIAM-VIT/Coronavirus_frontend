@@ -17,3 +17,21 @@ window.onscroll = () => {
         })      
     }  
   };
+  
+function confirmedcases(){
+    var result = document.querySelector(".confirmed");
+    var confirmed = "Total Cases";
+    result.innerHTML = '';
+
+    axios.get('https://covid19-india-adhikansh.herokuapp.com/summary', {
+        params: {
+            id: confirmed
+        }
+    })
+    .then(function (response) {
+        result.innerHTML = response[0].data.id;
+      })
+      .catch(function (error) {
+        result.innerHTML = "An error has occured";
+      });
+}
